@@ -1,2 +1,2 @@
 # WS2812
-WS2812 Driver Using SPI
+WS2812 Driver By SPI
