@@ -1,2 +1,3 @@
 # WS2812
 WS2812 Driver By SPI
+STM32 is Run On 64MHz
