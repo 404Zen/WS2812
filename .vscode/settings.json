@@ -1,0 +1,20 @@
+{
+    "files.associations": {
+        "includes.h": "c",
+        "oledfont.h": "c",
+        "oled.h": "c",
+        "bsp.h": "c",
+        "sys.h": "c",
+        "task.h": "c",
+        "led.h": "c",
+        "os.h": "c",
+        "stm32f10x.h": "c",
+        "stm32f10x_gpio.h": "c",
+        "delay.h": "c",
+        "usart.h": "c",
+        "cstdlib": "c",
+        "matrixkeyboard.h": "c",
+        "ws2812.h": "c",
+        "malloc.h": "c"
+    }
+}
