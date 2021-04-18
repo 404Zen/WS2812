@@ -48,7 +48,7 @@ void	StartTask(void *p_arg)
 	OSTmrCreate(	(OS_TMR*	)&Timer1,				//定时器1
 					(CPU_CHAR*	)"Timer1",
 					(OS_TICK	)0,						//初始化定时器时的延迟值
-					(OS_TICK	)10,					//定时器周期 50个Ticks
+					(OS_TICK	)100,					//定时器周期 Ticks数 每个Tick 1ms
 					(OS_OPT		)OS_OPT_TMR_PERIODIC,	//模式
 					(OS_TMR_CALLBACK_PTR)Timer1Callback,//回调函数
 					(void*		)0,						//回调函数参数
@@ -191,7 +191,8 @@ void	Timer1Callback(void *p_tmr, void *p_arg)
 
 	WS2812Reset();
 
-	GRBDataInit();
+	// GRBDataInit();
+	GradinetHSL();
 	
 
 }
