@@ -95,8 +95,6 @@ void	StartTask(void *p_arg)
 
 	// OS_TaskSuspend( (OS_TCB*)&StartTaskTCB, &err);	//挂起开始任务
 	OSTaskDel((OS_TCB*)0, &err);				//删除开始任务
-	
-
 }
 
 
@@ -176,25 +174,21 @@ void	Timer1Callback(void *p_tmr, void *p_arg)
 	// printf("Timer1 Callback!\r\n");
 
 
-	WS2812SendFrame();
+	// WS2812SendFrame();
 			
-	//等待DMA传送完成
-	while (1)
-	{
-		//DMA CH3 传输完成
-		if(DMA_GetFlagStatus(DMA1_FLAG_TC3) != RESET)
-		{
-			DMA_ClearFlag(DMA1_FLAG_TC3);
-			break;
-		}
-	}
+	// //等待DMA传送完成
+	// while (1)
+	// {
+	// 	//DMA CH3 传输完成
+	// 	if(DMA_GetFlagStatus(DMA1_FLAG_TC3) != RESET)
+	// 	{
+	// 		DMA_ClearFlag(DMA1_FLAG_TC3);
+	// 		break;
+	// 	}
+	// }
 
-	WS2812Reset();
-
-	// GRBDataInit();
-	GradinetHSL();
-	
-
+	// WS2812Reset();
+	// GradinetHSL();
 }
 
 

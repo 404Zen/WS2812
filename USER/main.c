@@ -30,6 +30,20 @@ int main(void)
 
 	delay_ms(100);
 
+	WS2812Init();
+
+
+	// WS2812DrawLine(6, 6, 1, 5, RGB_LIME);		//画竖线
+	
+	// WS2812DrawLine(0, 21, 6, 6, RGB_LIME);			//画横线
+
+	// WS2812ShowChar(0, 0, '2', RGB_LIME);
+
+	WS2812ShowString(0, 0, "23:45", RGB_WHITE);
+
+	WS2812RefreshDisplay();
+	
+
 	printf("USART0 Init Done!\r\n");
 
 
