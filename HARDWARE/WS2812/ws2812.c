@@ -673,4 +673,64 @@ uint8_t WS2812ShowString(uint8_t X, uint8_t Y, uint8_t *Str, uint32_t Color)
 	return 0;
 }
 
+/**
+	* @brief  WS2812ShowPicture 显示图片
+	* @param  *Picture:图片指针，RGB888排列
+	* @note   None. 
+	* @retval 0:Success;	1:Fail
+	*/
+uint8_t WS2812ShowPicture(uint8_t X, uint8_t *Picture)
+{
+	uint16_t StartPoint;
+	uint16_t i = 0;
+	uint8_t j = 0;
+	 
+	if(*Picture == NULL)
+		return 1;
+	
+	StartPoint = X*8;
+	i = WS2812_COL * WS2812_ROW - StartPoint;	//剩余可操作像素点数
+
+	//输入图像为RGB888 显存为GRB888排列
+	//单数列需要反转
+	while (i--)
+	{
+		for (j = 0;j < 8; j++)
+		{
+			// 单数列
+			if(X%2)
+			{
+				WS2812GRBBuf[(StartPoint+7-j) * 3 + 1] = (*Picture)*WS2812_BRIGHT/100;	//Red
+				Picture++;
+				WS2812GRBBuf[(StartPoint+7-j) * 3] = (*Picture)*WS2812_BRIGHT/100;		//Green
+				Picture++;
+				WS2812GRBBuf[(StartPoint+7-j) * 3 + 2] = (*Picture)*WS2812_BRIGHT/100;	//Blue
+				Picture++;
+
+				if(j == 7)
+					StartPoint += 8;
+			}
+			//双数列
+			else
+			{
+				WS2812GRBBuf[StartPoint * 3 + 1] = (*Picture)*WS2812_BRIGHT/100;	//Red
+				Picture++;
+				WS2812GRBBuf[StartPoint * 3] = (*Picture)*WS2812_BRIGHT/100;		//Green
+				Picture++;
+				WS2812GRBBuf[StartPoint * 3 + 2] = (*Picture)*WS2812_BRIGHT/100;	//Blue
+				Picture++;
+
+				StartPoint++;
+			}
+		}
+		X++;
+	}
+	return 0;
+}
+
+void ShowPicTest(void)
+{
+	WS2812ShowPicture(0, (uint8_t *)gImage_5);
+}
+
 /******************************END OF FILE*************************************/

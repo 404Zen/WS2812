@@ -22,12 +22,16 @@
 #include    "stm32f10x_spi.h"
 #include	"stm32f10x_dma.h"
 
-/* 平台相关定------------------------------------------------------------------*/
+/* 平台相关--------------------------------------------------------------------*/
 #define WS2812_DMA(x)	SPI_I2S_DMACmd(SPI1, SPI_I2S_DMAReq_Tx, (x))		//WS2812 DMA发送使能/失能
 // #define	WS2812_DISABLE_DMA	SPI_I2S_DMACmd(SPI1, SPI_I2S_DMAReq_Tx, DISABLE)	//WS2812 DMA发送失能
 
 
 /* Defines -------------------------------------------------------------------*/
+#ifndef	NULL
+#define	NULL	0
+#endif
+
 #define WS2812_ROW			8							//行数
 #define	WS2812_COL			32							//列数
 #define	WS2812_POINTS		(WS2812_ROW*WS2812_COL)		//屏幕的像素点数 如果帧率要 > 30fps Max Ponit is 1024 
@@ -37,9 +41,9 @@ static	uint8_t	WS2812DataBuf[WS2812_BUF_SIZE];			//SPI DMA缓存，每Byte数据
 static	uint8_t WS2812GRBBuf[WS2812_POINTS*3];			//WS2812 GRB数据缓存
 
 #define WS2812_BRIGHTNESS_CONTROL			1			//亮度控制使能
-#define	BRIGHTNESS_CONTROL					10			//0~100  亮度控制  0到100%
+#define	BRIGHTNESS_CONTROL					15			//0~100  亮度控制  0到100%
 
-#if WS2812_BRIGHTNESS_CONTROL == 1
+#if WS2812_BRIGHTNESS_CONTROL
 	#define	WS2812_BRIGHT					BRIGHTNESS_CONTROL
 #else
 	#define	WS2812_BRIGHT					100
@@ -88,5 +92,7 @@ float Hue2RGB(float Var1, float Var2, float VarHue);
 uint8_t WS2812DrawLine(uint8_t StartX, uint8_t EndX, uint8_t StartY, uint8_t EndY, uint32_t Color);
 uint8_t	WS2812ShowChar(uint8_t X, uint8_t Y, uint8_t Char, uint32_t Color);
 uint8_t WS2812ShowString(uint8_t X, uint8_t Y, uint8_t *Str, uint32_t Color);
+uint8_t WS2812ShowPicture(uint8_t X, uint8_t *Picture);
+void ShowPicTest(void);
 #endif
 /**********************************END OF FILE**********************************/

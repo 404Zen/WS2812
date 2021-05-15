@@ -39,7 +39,10 @@ int main(void)
 
 	// WS2812ShowChar(0, 0, '2', RGB_LIME);
 
-	WS2812ShowString(0, 0, "23:45", RGB_WHITE);
+	// WS2812ShowString(0, 0, "Hello", RGB_WHITE);
+	// WS2812ShowPicture(0, )
+
+	ShowPicTest();
 
 	WS2812RefreshDisplay();
 	
