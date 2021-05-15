@@ -7,6 +7,7 @@
         "sstream": "cpp",
         "functional": "cpp",
         "typeinfo": "cpp",
-        "includes.h": "c"
+        "includes.h": "c",
+        "ws2812font.h": "c"
     }
 }
